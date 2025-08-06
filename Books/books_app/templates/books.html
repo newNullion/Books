@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+        body {
+            background-color: #ececec;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Книги
+    </h1>
+    <h2>
+        <a href="{% url 'main' %}">Главная</a>
+    </h2>
+    <ul>
+        {% for book in books %}
+        <li>
+            <a href="{% url 'book' book.pk %}">
+                {{ book.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

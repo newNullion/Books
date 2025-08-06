@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+        body {
+            background-color: #ececec;
+        }
+        .text {
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        {{ book.name }}
+    </h1>
+    <h2>
+        <a href="{% url 'main' %}">Главная</a>
+    </h2>
+    <div>
+        <div class="text"><strong>Описание книги:</strong> </div>
+        <br>
+        <div class="text">{{ book.desc }}</div>
+    </div>
+    <h1>
+        Комментарии
+    </h1>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <strong style="font-size: 16px;">{{ comment.name }}:</strong>
+            {{ comment.text }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" style="text-align: center;">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Автор комментария" required>
+        <textarea name="text" placeholder="Введите комментарий" cols="40" rows="10" required></textarea>
+         <button type="submit">
+             Add
+         </button>
+    </form>
+
+</body>
+</html>
